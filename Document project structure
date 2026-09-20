@@ -1,0 +1,57 @@
+# AtmoSync Setup Guide
+
+## 1. Clone the Repository
+
+Clone the AtmoSync GitHub repository to the local system.
+
+## 2. Open the Project Folder
+
+Move into the AtmoSync project directory.
+
+## 3. Create a Virtual Environment
+
+Create a Python virtual environment for the project.
+
+bash
+python -m venv venv
+`
+
+## 4. Activate the Virtual Environment
+
+### Windows
+
+bash
+venv\Scripts\activate
+
+
+### Linux / macOS
+
+bash
+source venv/bin/activate
+
+
+## 5. Install Project Dependencies
+
+Install the packages listed in `requirements.txt`.
+
+bash
+pip install -r requirements.txt
+
+
+## 6. Verify Installation
+
+Check that Python and the required packages are installed correctly.
+
+## 7. Project Structure
+
+The main project folders are:
+
+* dataset/
+* analysis/
+* dashboard/
+* docs/
+
+## 8. Running Analysis
+
+Python analysis scripts can be executed from the project root directory.
+
