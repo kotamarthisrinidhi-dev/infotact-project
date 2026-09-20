@@ -1,0 +1,116 @@
+# AtmoSync Coding Standards
+
+## Purpose
+
+This document defines basic coding standards for the AtmoSync project.
+
+## 1. Python Naming
+
+Use clear and descriptive names for variables and functions.
+
+Example:
+
+python
+average_temperature = df["temp_max_c"].mean()
+`
+
+Avoid unclear names such as:
+
+python
+x = df["temp_max_c"].mean()
+
+
+## 2. File Naming
+
+Use lowercase names with underscores.
+
+Examples:
+
+* data_loading.py
+* data_cleaning.py
+* temperature_analysis.py
+* location_analysis.py
+
+## 3. Comments
+
+Add comments when they help explain an important section of code.
+
+Example:
+
+python
+# Load the AtmoSync dataset
+df = pd.read_csv(file_path)
+
+
+## 4. Functions
+
+Functions should have clear and descriptive names.
+
+Example:
+
+python
+def calculate_average_temperature():
+    pass
+
+
+## 5. Dataset Paths
+
+Use consistent project-relative paths.
+
+Example:
+
+python
+dataset/raw/atmosync_microclimate_raw.csv
+
+
+## 6. Raw Dataset
+
+The original raw dataset should not be modified directly.
+
+Cleaned or processed data should be stored in:
+
+text
+dataset/processed/
+
+
+## 7. Code Organization
+
+Python scripts should be organized according to their purpose.
+
+Examples:
+
+* Data loading → analysis/data_loading.py
+* Data cleaning → analysis/data_cleaning.py
+* Temperature analysis → analysis/temperature_analysis.py
+* Dashboard → dashboard/app.py
+
+## 8. Git Commits
+
+Commit messages should clearly describe the completed work.
+
+Examples:
+
+text
+Add dataset loading script
+Handle missing weather values
+Add temperature analysis
+Add dashboard filters
+
+
+## 9. Testing
+
+Run and test Python scripts before committing changes.
+
+## 10. Documentation
+
+Important project changes should be documented in the appropriate files under:
+
+text
+docs/
+
+
+## Final Objective
+
+Following these standards will help maintain consistent, readable, and organized code throughout the AtmoSync project.
+
+`
