@@ -1,0 +1,73 @@
+# AtmoSync Testing Guide
+
+## Purpose
+
+This document describes the basic testing steps for the AtmoSync project.
+
+## 1. Dataset Testing
+
+Check whether the raw dataset is available at:
+
+dataset/raw/atmosync_microclimate_raw.csv
+## 2. Data Cleaning Testing
+
+Run the data cleaning script:
+
+bash
+python analysis/data_cleaning.py
+`
+
+Verify:
+
+* Missing values are handled
+* Date values are converted correctly
+* Numerical columns have correct data types
+* Duplicate records are checked
+* Cleaned dataset is created
+
+## 3. Outlier Analysis Testing
+
+Run:
+
+bash
+python analysis/outlier_analysis.py
+
+
+Verify that weather columns are checked for unusual values.
+
+## 4. File Testing
+
+Check that important project files are present:
+
+* README.md
+* requirements.txt
+* .gitignore
+* Raw dataset
+* Processed dataset
+* Analysis scripts
+* Documentation files
+
+## 5. Git Testing
+
+Before pushing changes:
+
+bash
+git status
+
+
+Review the changed files and make sure unnecessary files are not included.
+
+## 6. Final Verification
+
+The project should be checked for:
+
+* Missing files
+* Incorrect file paths
+* Python errors
+* Dataset loading errors
+* Data cleaning errors
+* Documentation errors
+
+## Objective
+
+The testing process helps ensure that the AtmoSync project is organized, functional, and ready for further analysis and dashboard development.
