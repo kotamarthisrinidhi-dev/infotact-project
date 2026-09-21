@@ -33,3 +33,34 @@ output_path = r"C:\Users\rohit\OneDrive\Desktop\atmosync project\processed\atmos
 df.to_csv(output_path, index=False)
 
 print("\nCleaned dataset saved successfully.")
+
+# -----------------------------
+# 6. Clean Date and Data Types
+# -----------------------------
+
+# Convert date column to datetime
+df["date"] = pd.to_datetime(df["date"], errors="coerce")
+
+# Numerical columns
+numeric_columns = [
+    "latitude",
+    "longitude",
+    "elevation_m",
+    "temp_max_c",
+    "temp_min_c",
+    "rainfall_mm",
+    "humidity_pct",
+    "wind_speed_kmph"
+]
+
+# Convert numerical columns to numeric datatype
+for column in numeric_columns:
+    df[column] = pd.to_numeric(df[column], errors="coerce")
+
+# Display data types after conversion
+print("\nData Types After Cleaning:")
+print(df.dtypes)
+
+# Check invalid/missing dates
+print("\nInvalid or Missing Dates:")
+print(df["date"].isnull().sum())
