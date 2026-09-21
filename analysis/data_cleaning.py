@@ -64,3 +64,35 @@ print(df.dtypes)
 # Check invalid/missing dates
 print("\nInvalid or Missing Dates:")
 print(df["date"].isnull().sum())
+# -----------------------------
+# 7. Check Duplicate Records
+# -----------------------------
+
+# Count duplicates before removal
+duplicates_before = df.duplicated().sum()
+
+print("\nDuplicate Records Before Cleaning:")
+print(duplicates_before)
+
+# Remove duplicate records
+df = df.drop_duplicates()
+
+# Count duplicates after removal
+duplicates_after = df.duplicated().sum()
+
+print("\nDuplicate Records After Cleaning:")
+print(duplicates_after)
+
+# Display dataset shape after duplicate removal
+print("\nDataset Shape After Duplicate Removal:")
+print(df.shape)
+
+# -----------------------------
+# 8. Save Cleaned Dataset
+# -----------------------------
+
+output_path = r"C:\Users\rohit\OneDrive\Desktop\atmosync project\processed\atmosync_microclimate_cleaned.csv"
+
+df.to_csv(output_path, index=False)
+
+print("\nCleaned dataset saved successfully.")
