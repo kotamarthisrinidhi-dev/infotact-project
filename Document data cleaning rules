@@ -1,0 +1,75 @@
+
+ AtmoSync Data Cleaning Rules
+
+Purpose
+
+This document describes the basic cleaning rules used to prepare the AtmoSync micro-climate dataset for analysis.
+1. Missing Values
+
+Check all dataset columns for missing values.
+
+For numerical weather and geographic fields, missing values can be handled using an appropriate numerical replacement method.
+
+For categorical fields such as location and area_profile, missing values can be handled using an appropriate categorical replacement method.
+
+ 2. Date Cleaning
+
+The `date` column should be converted into a proper date format.
+
+Invalid date values should be identified during the cleaning process.
+
+ 3. Numerical Columns
+
+The following columns should be treated as numerical fields:
+
+- latitude
+- longitude
+- elevation_m
+- temp_max_c
+- temp_min_c
+- rainfall_mm
+- humidity_pct
+- wind_speed_kmph
+
+These columns should be checked and converted to suitable numerical data types.
+
+## 4. Categorical Columns
+
+The following columns contain categorical/text information:
+
+- location
+- area_profile
+
+These fields should be checked for missing or invalid values.
+ 5. Duplicate Records
+
+The dataset should be checked for duplicate records before performing analysis.
+
+ 6. Data Validation
+
+After cleaning, the dataset should be checked again for:
+
+- Missing values
+- Invalid dates
+- Incorrect data types
+- Duplicate records
+- Unusual values
+
+## 7. Processed Dataset
+
+The cleaned dataset should be stored separately from the original raw dataset.
+
+Raw data should remain unchanged so that the original source data is preserved.
+
+ Final Objective
+
+The cleaned AtmoSync dataset should be ready for exploratory data analysis, visualization, and dashboard development.
+```
+ 💻 Git commands
+
+```bash
+git add docs/data_cleaning_rules.md
+git commit -m "Document data cleaning rules"
+git push origin member2
+```
+
