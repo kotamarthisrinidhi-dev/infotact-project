@@ -64,12 +64,6 @@ Raw data should remain unchanged so that the original source data is preserved.
  Final Objective
 
 The cleaned AtmoSync dataset should be ready for exploratory data analysis, visualization, and dashboard development.
-```
- 💻 Git commands
 
-```bash
-git add docs/data_cleaning_rules.md
-git commit -m "Document data cleaning rules"
-git push origin member2
-```
+
 
