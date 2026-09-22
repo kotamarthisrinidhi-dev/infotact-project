@@ -49,11 +49,5 @@ Important weather fields include:
 These data quality checks help prepare the AtmoSync dataset for further analysis and visualization.
 ```
 
-  Git commands
 
-```bash
-git add docs/data_quality_notes.md
-git commit -m "Add data quality documentation"
-git push origin member2
-```
 
