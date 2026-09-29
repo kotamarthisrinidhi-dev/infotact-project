@@ -1,6 +1,7 @@
 import pandas as pd
 
-# Load cleaned dataset file_path =r"C:\Users\rohit\OneDrive\Desktop\atmosync project\processed\atmosync_microclimate_cleaned.csv"
+# Load cleaned dataset
+file_path =r"C:\Users\rohit\OneDrive\Desktop\atmosync project\processed\atmosync_microclimate_cleaned.csv"
 df = pd.read_csv(file_path)
 
 # Rainfall analysis 24
@@ -8,7 +9,7 @@ print("Rainfall Analysis")
 print("------")
 
 print("\nAverage Rainfall:") 
-print(df["rainfall_mm"].mea n())
+print(df["rainfall_mm"].mean())
 
 print("\nMinimum Rainfall:") 
 print(df["rainfall_mm"].min ())
@@ -30,4 +31,4 @@ print(location_rainfall)
 daily_rainfall = df.groupby("date") ["rainfall_mm"].sum()
 
 print("\nDaily Rainfall:") 
-print(daily_rainfall.head (1 0))
+print(daily_rainfall.head (10))
