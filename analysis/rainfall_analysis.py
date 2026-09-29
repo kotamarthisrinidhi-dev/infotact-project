@@ -1,34 +1,36 @@
 import pandas as pd
 
 # Load cleaned dataset
+
 file_path =r"C:\Users\rohit\OneDrive\Desktop\atmosync project\processed\atmosync_microclimate_cleaned.csv"
 df = pd.read_csv(file_path)
 
-# Rainfall analysis 24
-print("Rainfall Analysis") 
-print("------")
+# Humidity analysis
 
-print("\nAverage Rainfall:") 
-print(df["rainfall_mm"].mean())
+print("Humidity Analysis")
+print("------------")
 
-print("\nMinimum Rainfall:") 
-print(df["rainfall_mm"].min ())
+000
 
-print("\nMaximum Rainfall:") 
-print(df["rainfall_mm"].max ())
+# Basic statistics
 
-print("\nTotal Rainfall:") 
-print(df["rainfall_mm"].sum ())
+print("\nAverage Humidity:")
+print(df["humidity_pct"].mean())
 
+print("\nMinimum Humidity:") 
+print(df["humidity_pct"].min())
 
-# Location-wise rainfall analysis 
-location_rainfall = df.groupby("location") ["rainfall_mm"].agg( ["mean", "min", "max", "sum"] )
+print("\nMaximum Humidity:") 
+print(df["humidity_pct"].max())
 
-print("\nRainfall by Location:") 
-print(location_rainfall)
+# Location-wise humidity analysis
+location_humidity = df.groupby("location") ["humidity_pct"].agg(["mean", "min", "max"])
 
-# Date-wise rainfall 
-daily_rainfall = df.groupby("date") ["rainfall_mm"].sum()
+print("\nHumidity by Location:") 
+print(location_humidity)
 
-print("\nDaily Rainfall:") 
-print(daily_rainfall.head (10))
+# Date-wise humidity analysis
+daily_humidity = df.groupby("date") ["humidity_pct"].mean()
+
+print("\nDaily Average Humidity:")
+print(daily_humidity.head (10))
