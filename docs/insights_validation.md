@@ -1,7 +1,5 @@
 AtmoSync Weather Insights Validation
-
 # Purpose
-
 This document defines validation checks for insights generated from the AtmoSync micro-climate dataset.
 
 #1. Dataset Verification
