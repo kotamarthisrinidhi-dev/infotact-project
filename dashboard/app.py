@@ -38,7 +38,7 @@ try:
     # Show dataset
     st.subheader("Weather Dataset")
     st.dataframe(df, use_container_width=True)
-
+    
     # Weather summary
     st.subheader("Weather Summary")
 
@@ -68,3 +68,54 @@ except FileNotFoundError:
     )
 except KeyError as error:
     st.error(f"Required dataset column is missing: {error}")
+
+    
+st.subheader("Weather Visualizations")
+
+# Convert date column to datetime
+df["date"] = pd.to_datetime(df["date"], errors="coerce")
+
+# Location filter
+locations = sorted(df["location"].dropna().unique())
+selected_locations = st.multiselect(
+    "Select Locations",
+    locations,
+    default=locations
+)
+
+filtered_df = df[df["location"].isin(selected_locations)].copy()
+
+if filtered_df.empty:
+    st.warning("No weather data available for the selected locations.")
+else:
+    # Temperature chart
+    st.subheader("Daily Temperature Trends")
+    daily_temp = filtered_df.groupby("date")[
+        ["temp_max_c", "temp_min_c"]
+    ].mean()
+
+    st.line_chart(daily_temp)
+
+    # Rainfall chart
+    st.subheader("Average Rainfall by Location")
+    rainfall = filtered_df.groupby("location")[
+        "rainfall_mm"
+    ].mean()
+
+    st.bar_chart(rainfall)
+
+    # Humidity chart
+    st.subheader("Average Humidity by Location")
+    humidity = filtered_df.groupby("location")[
+        "humidity_pct"
+    ].mean()
+
+    st.bar_chart(humidity)
+
+    # Wind speed chart
+    st.subheader("Average Wind Speed by Location")
+    wind = filtered_df.groupby("location")[
+        "wind_speed_kmph"
+    ].mean()
+
+    st.bar_chart(wind)
