@@ -408,7 +408,7 @@ with st.sidebar:
 
     if st.button(
         "↻ Reset Filters",
-        use_container_width=True
+        width="stretch"
     ):
 
         st.rerun()
@@ -852,7 +852,7 @@ if page == "3️⃣ Executive Command Center":
 
     st.plotly_chart(
         fig,
-        use_container_width=True
+        width="stretch"
     )
 
     # LOCATION SNAPSHOT
@@ -881,7 +881,7 @@ if page == "3️⃣ Executive Command Center":
 
     st.dataframe(
         summary,
-        use_container_width=True,
+        width="stretch",
         hide_index=True
     )
 
@@ -943,7 +943,7 @@ if page == "4️⃣ Location Intelligence":
 
     st.plotly_chart(
         fig_temp,
-        use_container_width=True
+        width="stretch"
     )
 
     # THREE WEATHER METRICS
@@ -980,7 +980,7 @@ if page == "4️⃣ Location Intelligence":
 
         st.plotly_chart(
             fig,
-            use_container_width=True
+            width="stretch", 
         )
 
 
@@ -1013,7 +1013,7 @@ if page == "4️⃣ Location Intelligence":
 
         st.plotly_chart(
             fig,
-            use_container_width=True
+            width="stretch", 
         )
 
 
@@ -1046,7 +1046,7 @@ if page == "4️⃣ Location Intelligence":
 
         st.plotly_chart(
             fig,
-            use_container_width=True
+            width="stretch"
         )
 
     # LOCATION PROFILE
@@ -1141,7 +1141,7 @@ if page == "4️⃣ Location Intelligence":
 
     st.plotly_chart(
         fig,
-        use_container_width=True
+        width="stretch"
     )
 
 # CLIMATE & DATA INTELLIGENCE
@@ -1213,10 +1213,7 @@ elif page == "5️⃣ Climate & Data Intelligence":
             height=420
         )
 
-        st.plotly_chart(
-            fig,
-            use_container_width=True
-        )
+        st.plotly_chart(fig, width="stretch")
 
 
     with c2:
@@ -1237,10 +1234,7 @@ elif page == "5️⃣ Climate & Data Intelligence":
             height=420
         )
 
-        st.plotly_chart(
-            fig,
-            use_container_width=True
-        )
+        st.plotly_chart(fig, width="stretch")
 
 
     # DISTRIBUTION
@@ -1267,10 +1261,7 @@ elif page == "5️⃣ Climate & Data Intelligence":
     )
 
 
-    st.plotly_chart(
-        fig,
-        use_container_width=True
-    )
+    st.plotly_chart(fig, width="stretch")
 
     # CORRELATION
 
@@ -1312,7 +1303,7 @@ elif page == "5️⃣ Climate & Data Intelligence":
 
     st.plotly_chart(
         fig,
-        use_container_width=True
+        width="stretch"
     )
 
     # DATA QUALITY
@@ -1420,7 +1411,7 @@ elif page == "5️⃣ Climate & Data Intelligence":
 
     st.dataframe(
         anomaly_df,
-        use_container_width=True,
+        width="stretch", 
         hide_index=True
     )
 
