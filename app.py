@@ -1467,7 +1467,7 @@ elif page == "5️⃣ Climate & Data Intelligence":
 
     st.dataframe(
         anomaly_df,
-        width="stretch"
+        width="stretch",
         hide_index=True
     )
 
