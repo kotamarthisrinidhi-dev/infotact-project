@@ -5,10 +5,7 @@ from textwrap import dedent
 import plotly.express as px
 import plotly.graph_objects as go
 
-
-# ============================================================
 # PAGE CONFIG
-# ============================================================
 
 st.set_page_config(
     page_title="AtmoSync | Climate Intelligence",
@@ -17,10 +14,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-
-# ============================================================
 # PREMIUM UI STYLE
-# ============================================================
 
 st.markdown(
     """
@@ -216,9 +210,7 @@ st.markdown(
 )
 
 
-# ============================================================
 # CONSTANTS
-# ============================================================
 
 FILENAME = "atmosync_microclimate_cleaned.csv"
 APP_DIR = Path(__file__).resolve().parent
@@ -253,10 +245,7 @@ NUMERIC_COLUMNS = [
     "wind_speed_kmph"
 ]
 
-
-# ============================================================
 # LOAD DATA
-# ============================================================
 
 @st.cache_data
 def load_data(path):
@@ -289,9 +278,7 @@ except Exception as error:
     st.stop()
 
 
-# ============================================================
 # VALIDATE DATA
-# ============================================================
 
 missing_columns = [
     column
@@ -333,9 +320,7 @@ if df.empty:
     st.stop()
 
 
-# ============================================================
 # SIDEBAR
-# ============================================================
 
 with st.sidebar:
 
@@ -457,9 +442,7 @@ if filtered_df.empty:
     st.stop()
 
 
-# ============================================================
 # CALCULATIONS
-# ============================================================
 
 record_count = len(filtered_df)
 
@@ -488,9 +471,7 @@ avg_wind = filtered_df[
 ].mean()
 
 
-# ============================================================
 # DATA QUALITY
-# ============================================================
 
 quality_columns = REQUIRED_COLUMNS
 
@@ -513,9 +494,7 @@ else:
 
     completeness = 0
 
-# ============================================================
 # HERO
-# ============================================================
 
 hero_html = f"""
 <div class="hero">
@@ -541,26 +520,20 @@ hero_html = f"""
 
 st.html(hero_html)
 
-
-# ============================================================
 # MAIN NAVIGATION
-# ============================================================
 
 page = st.radio(
-    "",
-    [
+    label="Navigation Views",  # <-- Provide a valid string description
+    options=[
         "3️⃣ Executive Command Center",
         "4️⃣ Location Intelligence",
         "5️⃣ Climate & Data Intelligence"
     ],
-    horizontal=True
+    horizontal=True,
+    label_visibility="collapsed"  # <-- Hides the text so your layout looks exactly the same
 )
 
-
-# ============================================================
-# TEMPLATE 3
 # EXECUTIVE COMMAND CENTER
-# ============================================================
 
 if page == "3️⃣ Executive Command Center":
 
@@ -685,9 +658,7 @@ if page == "3️⃣ Executive Command Center":
             """)
         )
 
-    # --------------------------------------------------------
     # AUTOMATED INSIGHTS
-    # --------------------------------------------------------
 
     st.markdown(
         '<div class="section">Executive Intelligence</div>',
@@ -826,9 +797,8 @@ if page == "3️⃣ Executive Command Center":
             </div>
             """))
 
-    # --------------------------------------------------------
+
     # MAIN TREND
-    # --------------------------------------------------------
 
     st.markdown(
         '<div class="section">Temperature Intelligence</div>',
@@ -885,10 +855,7 @@ if page == "3️⃣ Executive Command Center":
         use_container_width=True
     )
 
-
-    # --------------------------------------------------------
     # LOCATION SNAPSHOT
-    # --------------------------------------------------------
 
     st.markdown(
         '<div class="section">Location Performance Snapshot</div>',
@@ -918,11 +885,7 @@ if page == "3️⃣ Executive Command Center":
         hide_index=True
     )
 
-
-# ============================================================
-# TEMPLATE 4
 # LOCATION INTELLIGENCE
-# ============================================================
 
 if page == "4️⃣ Location Intelligence":
 
@@ -931,9 +894,7 @@ if page == "4️⃣ Location Intelligence":
         unsafe_allow_html=True
     )
 
-    # --------------------------------------------------------
     # TEMPERATURE COMPARISON
-    # --------------------------------------------------------
 
     temp_location = (
         filtered_df
@@ -985,10 +946,7 @@ if page == "4️⃣ Location Intelligence":
         use_container_width=True
     )
 
-
-    # --------------------------------------------------------
     # THREE WEATHER METRICS
-    # --------------------------------------------------------
 
     c1, c2, c3 = st.columns(3)
 
@@ -1091,10 +1049,7 @@ if page == "4️⃣ Location Intelligence":
             use_container_width=True
         )
 
-
-    # --------------------------------------------------------
     # LOCATION PROFILE
-    # --------------------------------------------------------
 
     st.markdown(
         '<div class="section">Location Profile</div>',
@@ -1152,10 +1107,7 @@ if page == "4️⃣ Location Intelligence":
             f"{profile['wind_speed_kmph'].mean():.2f} km/h"
         )
 
-
-    # --------------------------------------------------------
     # SCATTER
-    # --------------------------------------------------------
 
     st.markdown(
         '<div class="section">Climate Relationship Map</div>',
@@ -1192,11 +1144,7 @@ if page == "4️⃣ Location Intelligence":
         use_container_width=True
     )
 
-
-# ============================================================
-# TEMPLATE 5
 # CLIMATE & DATA INTELLIGENCE
-# ============================================================
 
 elif page == "5️⃣ Climate & Data Intelligence":
 
@@ -1205,10 +1153,7 @@ elif page == "5️⃣ Climate & Data Intelligence":
         unsafe_allow_html=True
     )
 
-
-    # --------------------------------------------------------
     # MONTHLY DATA
-    # --------------------------------------------------------
 
     monthly = (
         filtered_df
@@ -1298,9 +1243,7 @@ elif page == "5️⃣ Climate & Data Intelligence":
         )
 
 
-    # --------------------------------------------------------
     # DISTRIBUTION
-    # --------------------------------------------------------
 
     st.markdown(
         '<div class="section">Metric Distribution Analysis</div>',
@@ -1329,10 +1272,7 @@ elif page == "5️⃣ Climate & Data Intelligence":
         use_container_width=True
     )
 
-
-    # --------------------------------------------------------
     # CORRELATION
-    # --------------------------------------------------------
 
     st.markdown(
         '<div class="section">Weather Variable Relationships</div>',
@@ -1375,11 +1315,8 @@ elif page == "5️⃣ Climate & Data Intelligence":
         use_container_width=True
     )
 
-
-    # --------------------------------------------------------
     # DATA QUALITY
-    # --------------------------------------------------------
-
+    
     st.markdown(
         '<div class="section">Data Quality Intelligence</div>',
         unsafe_allow_html=True
@@ -1422,10 +1359,7 @@ elif page == "5️⃣ Climate & Data Intelligence":
             filtered_df["date"].nunique()
         )
 
-
-    # --------------------------------------------------------
     # ANOMALY ANALYSIS
-    # --------------------------------------------------------
 
     anomaly_results = []
 
@@ -1497,9 +1431,7 @@ elif page == "5️⃣ Climate & Data Intelligence":
     )
 
 
-# ============================================================
 # DOWNLOAD
-# ============================================================
 
 st.divider()
 
