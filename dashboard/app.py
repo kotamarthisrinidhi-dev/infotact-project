@@ -195,6 +195,23 @@ st.markdown(
         color: white !important;
     }
 
+    /* Reset Filters button — background set explicitly so the
+       text color always has contrast, in both normal and hover
+       states (white text alone was invisible on a white button). */
+    section[data-testid="stSidebar"] .stButton button {
+        background-color: #0f2d4a;
+        color: white !important;
+        border: 1px solid rgba(255,255,255,0.15);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+        transition: box-shadow 0.15s ease, background-color 0.15s ease;
+    }
+
+    section[data-testid="stSidebar"] .stButton button:hover {
+        background-color: #163e63;
+        color: white !important;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+    }
+
     /* FOOTER */
 
     .footer {
@@ -208,7 +225,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
 
 # CONSTANTS
 
@@ -245,6 +261,7 @@ NUMERIC_COLUMNS = [
     "wind_speed_kmph"
 ]
 
+
 # LOAD DATA
 
 @st.cache_data
@@ -276,7 +293,6 @@ except Exception as error:
     st.error(f"Unable to load dataset: {error}")
 
     st.stop()
-
 
 # VALIDATE DATA
 
@@ -318,7 +334,6 @@ if df.empty:
     st.error("No valid weather records available.")
 
     st.stop()
-
 
 # SIDEBAR
 
@@ -388,35 +403,14 @@ with st.sidebar:
     )
 
 
-    metric_map = {
-        "Maximum Temperature": "temp_max_c",
-        "Minimum Temperature": "temp_min_c",
-        "Rainfall": "rainfall_mm",
-        "Humidity": "humidity_pct",
-        "Wind Speed": "wind_speed_kmph"
-    }
-
-    metric_name = st.selectbox(
-        "Analysis Metric",
-        list(metric_map.keys())
-    )
-
-    metric_column = metric_map[
-        metric_name
-    ]
-
-
     if st.button(
         "↻ Reset Filters",
-        width="stretch"
+        use_container_width=True
     ):
 
         st.rerun()
 
-
-# ============================================================
 # FILTER
-# ============================================================
 
 filtered_df = df[
     (df["date"] >= start_date)
@@ -440,7 +434,6 @@ if filtered_df.empty:
     )
 
     st.stop()
-
 
 # CALCULATIONS
 
@@ -471,7 +464,9 @@ avg_wind = filtered_df[
 ].mean()
 
 
+# ============================================================
 # DATA QUALITY
+# ============================================================
 
 quality_columns = REQUIRED_COLUMNS
 
@@ -523,17 +518,20 @@ st.html(hero_html)
 # MAIN NAVIGATION
 
 page = st.radio(
-    label="Navigation Views",  # <-- Provide a valid string description
-    options=[
+    "",
+    [
         "3️⃣ Executive Command Center",
         "4️⃣ Location Intelligence",
         "5️⃣ Climate & Data Intelligence"
     ],
-    horizontal=True,
-    label_visibility="collapsed"  # <-- Hides the text so your layout looks exactly the same
+    horizontal=True
 )
 
+
+# ============================================================
+# TEMPLATE 3
 # EXECUTIVE COMMAND CENTER
+# ============================================================
 
 if page == "3️⃣ Executive Command Center":
 
@@ -659,7 +657,7 @@ if page == "3️⃣ Executive Command Center":
         )
 
     # AUTOMATED INSIGHTS
-
+    
     st.markdown(
         '<div class="section">Executive Intelligence</div>',
         unsafe_allow_html=True
@@ -797,7 +795,6 @@ if page == "3️⃣ Executive Command Center":
             </div>
             """))
 
-
     # MAIN TREND
 
     st.markdown(
@@ -852,11 +849,11 @@ if page == "3️⃣ Executive Command Center":
 
     st.plotly_chart(
         fig,
-        width="stretch"
+        use_container_width=True
     )
 
     # LOCATION SNAPSHOT
-
+   
     st.markdown(
         '<div class="section">Location Performance Snapshot</div>',
         unsafe_allow_html=True
@@ -881,7 +878,7 @@ if page == "3️⃣ Executive Command Center":
 
     st.dataframe(
         summary,
-        width="stretch",
+        use_container_width=True,
         hide_index=True
     )
 
@@ -943,10 +940,11 @@ if page == "4️⃣ Location Intelligence":
 
     st.plotly_chart(
         fig_temp,
-        width="stretch"
+        use_container_width=True
     )
 
     # THREE WEATHER METRICS
+
 
     c1, c2, c3 = st.columns(3)
 
@@ -980,7 +978,7 @@ if page == "4️⃣ Location Intelligence":
 
         st.plotly_chart(
             fig,
-            width="stretch", 
+            use_container_width=True
         )
 
 
@@ -1013,7 +1011,7 @@ if page == "4️⃣ Location Intelligence":
 
         st.plotly_chart(
             fig,
-            width="stretch", 
+            use_container_width=True
         )
 
 
@@ -1046,7 +1044,7 @@ if page == "4️⃣ Location Intelligence":
 
         st.plotly_chart(
             fig,
-            width="stretch"
+            use_container_width=True
         )
 
     # LOCATION PROFILE
@@ -1108,27 +1106,63 @@ if page == "4️⃣ Location Intelligence":
         )
 
     # SCATTER
-
+   
     st.markdown(
         '<div class="section">Climate Relationship Map</div>',
         unsafe_allow_html=True
     )
 
+    scatter_axis_labels = {
+        "Maximum Temperature (°C)": "temp_max_c",
+        "Minimum Temperature (°C)": "temp_min_c",
+        "Rainfall (mm)": "rainfall_mm",
+        "Humidity (%)": "humidity_pct",
+        "Wind Speed (km/h)": "wind_speed_kmph",
+    }
+
+    axis_col1, axis_col2 = st.columns(2)
+
+    with axis_col1:
+        x_axis_label = st.selectbox(
+            "X-axis",
+            list(scatter_axis_labels.keys()),
+            index=0,
+            key="scatter_x_axis"
+        )
+
+    with axis_col2:
+        y_axis_label = st.selectbox(
+            "Y-axis",
+            list(scatter_axis_labels.keys()),
+            index=3,
+            key="scatter_y_axis"
+        )
+
+    x_axis_col = scatter_axis_labels[x_axis_label]
+    y_axis_col = scatter_axis_labels[y_axis_label]
+
+    # Bubble size uses rainfall by default, unless rainfall is
+    # already one of the chosen axes — then fall back to wind speed
+    # so the size channel still adds information instead of repeating
+    # an axis.
+    size_col = "rainfall_mm"
+    if size_col in (x_axis_col, y_axis_col):
+        size_col = "wind_speed_kmph"
 
     fig = px.scatter(
         filtered_df,
-        x="temp_max_c",
-        y="humidity_pct",
+        x=x_axis_col,
+        y=y_axis_col,
         color="location",
-        size="rainfall_mm",
+        size=size_col,
         hover_data=[
             "date",
             "wind_speed_kmph"
         ],
-        title="Temperature vs Humidity",
+        title=f"{x_axis_label.split(' (')[0]} vs {y_axis_label.split(' (')[0]}",
         labels={
-            "temp_max_c": "Maximum Temperature (°C)",
-            "humidity_pct": "Humidity (%)"
+            x_axis_col: x_axis_label,
+            y_axis_col: y_axis_label
         }
     )
 
@@ -1141,8 +1175,9 @@ if page == "4️⃣ Location Intelligence":
 
     st.plotly_chart(
         fig,
-        width="stretch"
+        use_container_width=True
     )
+
 
 # CLIMATE & DATA INTELLIGENCE
 
@@ -1213,7 +1248,10 @@ elif page == "5️⃣ Climate & Data Intelligence":
             height=420
         )
 
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(
+            fig,
+            use_container_width=True
+        )
 
 
     with c2:
@@ -1234,7 +1272,10 @@ elif page == "5️⃣ Climate & Data Intelligence":
             height=420
         )
 
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(
+            fig,
+            use_container_width=True
+        )
 
 
     # DISTRIBUTION
@@ -1244,6 +1285,21 @@ elif page == "5️⃣ Climate & Data Intelligence":
         unsafe_allow_html=True
     )
 
+    metric_map = {
+        "Maximum Temperature": "temp_max_c",
+        "Minimum Temperature": "temp_min_c",
+        "Rainfall": "rainfall_mm",
+        "Humidity": "humidity_pct",
+        "Wind Speed": "wind_speed_kmph"
+    }
+
+    metric_name = st.selectbox(
+        "Analysis Metric",
+        list(metric_map.keys()),
+        key="distribution_metric"
+    )
+
+    metric_column = metric_map[metric_name]
 
     fig = px.histogram(
         filtered_df,
@@ -1261,7 +1317,10 @@ elif page == "5️⃣ Climate & Data Intelligence":
     )
 
 
-    st.plotly_chart(fig, width="stretch")
+    st.plotly_chart(
+        fig,
+        use_container_width=True
+    )
 
     # CORRELATION
 
@@ -1303,11 +1362,12 @@ elif page == "5️⃣ Climate & Data Intelligence":
 
     st.plotly_chart(
         fig,
-        width="stretch"
+        use_container_width=True
     )
 
+
     # DATA QUALITY
-    
+
     st.markdown(
         '<div class="section">Data Quality Intelligence</div>',
         unsafe_allow_html=True
@@ -1349,6 +1409,7 @@ elif page == "5️⃣ Climate & Data Intelligence":
             "Unique Days",
             filtered_df["date"].nunique()
         )
+
 
     # ANOMALY ANALYSIS
 
@@ -1411,7 +1472,7 @@ elif page == "5️⃣ Climate & Data Intelligence":
 
     st.dataframe(
         anomaly_df,
-        width="stretch", 
+        use_container_width=True,
         hide_index=True
     )
 
