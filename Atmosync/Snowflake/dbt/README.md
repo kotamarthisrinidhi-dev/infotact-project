@@ -1,35 +1,20 @@
-# AtmoSync dbt
+# AtmoSync Snowflake
 
-This module contains the dbt transformation layer
+This module provides the cloud data storage layer
 for the AtmoSync weather analytics pipeline.
-
-## Purpose
-
-dbt is used to transform and validate weather data
-stored in Snowflake.
-
-## Data Flow
-
-Kafka
-  ↓
-Snowflake STAGING
-  ↓
-Snowflake RAW
-  ↓
-dbt
-  ↓
-CLEAN
-  ↓
-ANALYTICS
-  ↓
-AtmoSync Dashboard
 
 ## Database
 
 ATMOSYNC_DB
 
-## Transformation Layers
+## Purpose
 
-- Staging
-- Clean
-- Analytics
+Snowflake is used to store, validate, transform,
+and prepare weather data for analytics and dashboard consumption.
+
+## Planned Data Layers
+
+- STAGING
+- RAW
+- CLEAN
+- ANALYTICS
