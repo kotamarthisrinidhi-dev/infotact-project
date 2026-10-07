@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: weather_summary
+    description: "Location-level weather analytics summary for AtmoSync."
+
+    columns:
+      - name: LOCATION
+        description: "Weather observation location."
+        tests:
+          - not_null
+          - unique
+
+      - name: RECORD_COUNT
+        description: "Number of weather records for each location."
+        tests:
+          - not_null
+
+      - name: AVG_MAX_TEMP_C
+        description: "Average maximum temperature in Celsius."
+
+      - name: AVG_MIN_TEMP_C
+        description: "Average minimum temperature in Celsius."
+
+      - name: AVG_TEMP_C
+        description: "Average temperature calculated from maximum and minimum temperature."
+
+      - name: TOTAL_RAINFALL_MM
+        description: "Total rainfall in millimetres."
+
+      - name: AVG_HUMIDITY_PCT
+        description: "Average humidity percentage."
+
+      - name: AVG_WIND_SPEED_KMPH
+        description: "Average wind speed in kilometres per hour."
