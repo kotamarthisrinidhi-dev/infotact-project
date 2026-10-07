@@ -64,5 +64,4 @@ plt.title("Average Wind Speed by Location")
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
-
 print("Weather visualizations created successfully.")
