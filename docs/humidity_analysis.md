@@ -1,4 +1,3 @@
-
 # AtmoSync Humidity Analysis
 
 ## Purpose
@@ -36,9 +35,9 @@ The analysis includes:
 
 Use the `date` field to study changes in humidity over time.
 
-## 5. Temperature and Humidity
+## 5. Temperature and Humidity Relationship
 
-Study the relationship between temperature and humidity to understand possible micro-climate patterns.
+Study the relationship between temperature and humidity to identify possible micro-climate patterns.
 
 ## 6. Visualization
 
@@ -62,5 +61,4 @@ The analysis should provide:
 - Temperature and humidity relationship
 
 ## Final Objective
-
-The humidity analysis will help understand humidity variations across locations and over time in the AtmoSync micro-climate dataset.
+The humidity analysis will help understand humidity variations across locations and over time in the AtmoSync micro-climate dataset

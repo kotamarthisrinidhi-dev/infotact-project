@@ -1,4 +1,3 @@
-
 # AtmoSync Location-wise Weather Analysis
 
 ## Purpose
@@ -8,9 +7,7 @@ This document describes the location-wise analysis planned for the AtmoSync micr
 ## Location Field
 
 The main location column is:
-
-- `location`
-
+- location
 ## 1. Location Identification
 
 Identify the different locations available in the AtmoSync dataset.
@@ -30,7 +27,12 @@ Compare rainfall across different locations using:
 
 - `rainfall_mm`
 
-The analysis can include average, minimum, maximum, and total rainfall.
+The analysis can include:
+
+- Average rainfall
+- Minimum rainfall
+- Maximum rainfall
+- Total rainfall
 
 ## 4. Humidity Comparison
 
@@ -46,7 +48,7 @@ Compare wind speed across locations using:
 
 ## 6. Overall Weather Comparison
 
-Compare major weather parameters across different locations:
+Compare the major weather parameters:
 
 - Temperature
 - Rainfall
@@ -75,4 +77,4 @@ The analysis should provide:
 
 ## Final Objective
 
-The location-wise analysis will help identify differences in micro-climate conditions across the locations present in the Project 
+The location-wise analysis will help understand differences in micro-climate conditions across the locations present in the AtmoSync dataset.
