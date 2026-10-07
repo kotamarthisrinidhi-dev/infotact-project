@@ -27,12 +27,42 @@ Study relationships between rainfall and:
 - Wind speed
 
 ## 4. Humidity Relationships
+
+Analyze the relationship between humidity and:
+
+- Maximum temperature
+- Minimum temperature
+
 Analyze relationships between humidity and:
 - Temperature
 - Rainfall
 - Wind speed
 
 ## 5. Wind Speed Relationships
+
+Study the relationship between wind speed and other weather parameters.
+
+## 6. Visualization
+
+Correlation results can be represented using:
+
+- Correlation matrix
+- Heatmap
+- Scatter plots
+
+## Expected Output
+
+The analysis should provide:
+
+- Correlation matrix
+- Relationships between weather parameters
+- Visual representation of correlations
+- Useful observations for further analysis
+
+## Final Objective
+
+Correlation analysis will help understand how different weather parameters are related within the project 
+
 Study the relationship between wind speed and other weather parameters.
 
 ## 6. Visualization

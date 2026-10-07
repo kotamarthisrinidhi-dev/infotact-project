@@ -1,0 +1,14 @@
+name: 'atmosync_dbt'
+version: '1.0.0'
+
+profile: 'atmosync_dbt'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+models:
+  atmosync_dbt:
+    +materialized: view

@@ -61,5 +61,4 @@ The analysis should provide:
 - Temperature and humidity relationship
 
 ## Final Objective
-
 The humidity analysis will help understand humidity variations across locations and over time in the AtmoSync micro-climate dataset
